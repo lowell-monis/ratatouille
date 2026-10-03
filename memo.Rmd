@@ -1,0 +1,12 @@
+---
+output:
+  pdf_document:
+    template: assets/memo-template.tex
+to: "The Office of the Mayor, The City of New York"
+from: "Lowell Monis and Sumaiya Imad"
+subject: "Recommendations for Rodent Mitigation"
+date: "October 3, 2026"
+bibliography: assets/references.bib
+csl: assets/apa.csl
+---
+
