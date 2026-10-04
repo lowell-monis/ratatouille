@@ -11,3 +11,82 @@ csl: assets/apa.csl
 ---
 
 This policy memo
+
+
+```{r setup, include=FALSE}
+# Global knitr chunk options: suppress code, warnings, and messages, 
+# and set optimal figure dimensions for PDF rendering via LaTeX
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 6.5,
+  fig.height = 4.0,
+  fig.align = "center",
+  out.width = "\\textwidth"
+)
+
+# Load required libraries
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(sf)
+library(tigris)
+library(zoo)
+
+# Source utility functions
+source("utils.R")
+```
+
+```{r}
+theme_nyc_memo <- function(base_size = 11, base_family = "") {
+  theme_bw(base_size = base_size, base_family = base_family) +
+    theme(
+      # Typography & Titles
+      plot.title = element_text(face = "bold", size = base_size + 3, color = "#111111", margin = margin(b = 6)),
+      plot.subtitle = element_text(size = base_size, color = "#555555", margin = margin(b = 12)),
+      plot.caption = element_text(size = base_size - 3, color = "#777777", hjust = 0, margin = margin(t = 10)),
+      
+      # Axis formatting
+      axis.title = element_text(face = "bold", size = base_size, color = "#333333"),
+      axis.text = element_text(size = base_size - 1, color = "#444444"),
+      axis.ticks = element_line(color = "#CCCCCC", linewidth = 0.5),
+      
+      # Panel & Grid lines (Subtle grayscale)
+      panel.border = element_rect(color = "#CCCCCC", linewidth = 0.6),
+      panel.grid.major = element_line(color = "#EAEAEA", linewidth = 0.4),
+      panel.grid.minor = element_blank(),
+      background = element_rect(fill = "#FFFFFF", color = NA),
+      
+      # Legend formatting
+      legend.background = element_rect(fill = "#FFFFFF", color = "#CCCCCC", linewidth = 0.4),
+      legend.title = element_text(face = "bold", size = base_size - 1),
+      legend.text = element_text(size = base_size - 1),
+      legend.position = "bottom"
+    )
+}
+
+# Official NYC Flag Grayscale + Accent Palettes
+nyc_grayscale_palette <- c("#222222", "#555555", "#888888", "#BBBBBB", "#DDDDDD")
+nyc_accent_palette <- c("#002B49", "#FF6600", "#555555", "#888888", "#BBBBBB")
+```
+
+```{r}
+# Example Application on Plot 1 (Time Series)
+p1 <- ggplot(daily_borough_data, aes(x = created_date, y = smoothed_sightings, color = borough)) +
+  geom_line(linewidth = 0.8, alpha = 0.9) +
+  scale_y_continuous(labels = scales::label_comma()) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  scale_color_manual(values = nyc_accent_palette) + # Applies NYC Deep Blue & Orange accents against grayscale
+  labs(
+    title = "Daily Trajectory of NYC Rat Sightings by Borough",
+    subtitle = "30-day moving average tracking longitudinal trends (2010–2025)",
+    x = "Year",
+    y = "Daily Sightings (Smoothed)",
+    color = "Borough",
+    caption = "Source: NYC 311 rat-sightings data."
+  ) +
+  theme_nyc_memo()
+
+print(p1)
+```
