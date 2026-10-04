@@ -4,13 +4,12 @@ output:
     template: assets/memo-template.tex
 to: "The Office of the Mayor, The City of New York"
 from: "Lowell Monis and Sumaiya Imad"
-subject: "Recommendations for Rodent Mitigation"
+subject: "Recommendations for Targeting Rat-Control Resources Using Geographic and Seasonal Reporting Patterns"
 date: "October 3, 2026"
 bibliography: assets/references.bib
 csl: assets/apa.csl
 ---
-
-This policy memo
+New York City received nearly 20,000 rat-sighting reports in 2025, a substantial decline from its 2022 peak. Despite this improvement, reported sightings remain a persistent concern. Examining where reports are concentrated and when they increase can help the Mayor’s Office decide how to allocate inspection and sanitation resources.
 
 
 ```{r setup, include=FALSE}
@@ -90,3 +89,13 @@ p1 <- ggplot(daily_borough_data, aes(x = created_date, y = smoothed_sightings, c
 
 print(p1)
 ```
+
+This analysis examines borough reporting trends from 2010 through 2025, with a closer look at seasonal reporting density during 2021–2025. The results suggest that prevention should begin before summer and that resource allocation should consider both the volume of complaints and their geographic concentration.
+
+The seasonal maps show that Manhattan consistently has a high concentration of reports per square kilometer, particularly during summer. This pattern is especially pronounced in summer 2022. Brooklyn also shows greater reporting density during warmer seasons, while Queens and Staten Island generally have lower densities. These maps provide a different perspective from total complaint counts. Brooklyn receives more reports overall, but Manhattan’s smaller geographic area produces a higher concentration per square kilometer. Both measures matter for planning: complaint totals indicate the volume of potential inspection demand, while reporting density indicates how closely that demand is concentrated.
+
+The time series shows recurring seasonal peaks alongside a longer-term rise in reported sightings. Brooklyn generally records the highest daily report volume, followed by Manhattan. The 30-day moving average reduces daily fluctuations, making these broader patterns easier to identify. Reporting peaks were particularly high during the early 2020s. Brooklyn’s peaks declined noticeably in 2025 compared with the preceding years, suggesting improvement in reported activity. However, the repeated seasonal cycle makes clear why a decline during winter should not, on its own, be treated as evidence of lasting progress. Comparisons should focus on equivalent periods across years.The seasonal pattern also has a practical implication. Inspections, waste-storage outreach, and sanitation coordination should begin in spring, allowing time to address potential food sources and access points before summer demand increases.
+
+The annual percentage-change chart shows that boroughs did not follow the same path. All five experienced increases in 2021, but changes were mixed from 2022 through 2024. Some boroughs recorded declines while others continued to experience growth in reports. By 2025, every borough recorded fewer reports than in the previous year. Brooklyn and Queens experienced the largest proportional reductions. This broader decline is encouraging, although it does not establish that city policies caused the improvement. Changes in reporting behavior and other conditions may also have influenced the totals. The variation across boroughs supports monitoring local trends alongside the citywide total. A citywide decline can conceal areas where reports remain elevated or where improvement has been slower.
+
+The Mayor’s Office should coordinate a spring prevention effort that directs inspections and waste-storage outreach toward locations with recurring complaints. Manhattan’s high reporting density and Brooklyn’s substantial complaint volume provide starting points for allocating resources. Borough-level findings should then be followed by neighborhood and property-level investigation to identify conditions requiring action. Progress can be measured through comparisons of the same seasons across years and inspections documenting signs of active infestation. Combining complaint records with inspection evidence would give the city a stronger basis for deciding where additional sanitation support is needed and whether recent improvements are being sustained.
